@@ -48,16 +48,17 @@ int main() {
     std::cout << "Символ | Частота (p_x)\n";
     std::cout << "----------------------\n";
 
+    double sum = 0;
     //вычисление относительной частоты по формуле p = Nx / Nall и вывод таблицы
     for (auto const& pair : sorted_freq) {
         //приведение к double для корректного деления без потери дробной части
         double px = (double)pair.second / text.length();
-
-        //обработка пробела для визуальной чистоты отчета
         if (pair.first == ' ') std::cout << "'пробел'";
         else std::cout << " '" << (char)pair.first << "'  ";
-
         std::cout << " | " << px << " (" << pair.second << " раз)\n";
+        sum += px;
     }
+    //выведем сумму частот для проверки корректности данных
+    std::cout << "\nСумма частот: " << sum << "\n";
     return 0;
 }
